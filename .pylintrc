@@ -1,0 +1,23 @@
+[MESSAGES CONTROL]
+
+disable=
+    bad-whitespace,
+    bad-continuation,
+    invalid-name,
+    no-else-return,
+    superfluous-parens,
+    too-few-public-methods,
+    trailing-newlines,
+    duplicate-code,
+    missing-function-docstring,
+    missing-class-docstring,
+    missing-module-docstring,
+    consider-using-f-string,
+    too-many-positional-arguments,
+
+[TYPECHECK]
+generated-members=
+    torch,
+    tensorrt,
+    pycuda,
+
