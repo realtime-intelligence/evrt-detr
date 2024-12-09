@@ -2,10 +2,13 @@
 # -*- coding:utf-8 -*-
 # Copyright (c) Megvii Inc. All rights reserved.
 import os
+import logging
 import shutil
-from loguru import logger
+#from loguru import logger
 
 import torch
+
+logger = logging.getLogger('YOLOX/utils')
 
 
 def load_ckpt(model, ckpt):

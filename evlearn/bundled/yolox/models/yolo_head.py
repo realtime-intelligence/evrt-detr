@@ -3,17 +3,20 @@
 # Copyright (c) Megvii Inc. All rights reserved.
 
 import math
-from loguru import logger
+#from loguru import logger
+import logging
 
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from yolox.utils import bboxes_iou, cxcywh2xyxy, meshgrid, visualize_assign
+from ..utils import bboxes_iou, cxcywh2xyxy, meshgrid
+#, visualize_assign
 
 from .losses import IOUloss
 from .network_blocks import BaseConv, DWConv
 
+logger = logging.getLogger('YOLOXHead')
 
 class YOLOXHead(nn.Module):
     def __init__(
@@ -637,5 +640,5 @@ class YOLOXHead(nn.Module):
 
             xyxy_boxes = cxcywh2xyxy(gt_bboxes_per_image)
             save_name = save_prefix + str(batch_idx) + ".png"
-            img = visualize_assign(img, xyxy_boxes, coords, matched_gt_inds, save_name)
+            #img = visualize_assign(img, xyxy_boxes, coords, matched_gt_inds, save_name)
             logger.info(f"save img to {save_name}")
