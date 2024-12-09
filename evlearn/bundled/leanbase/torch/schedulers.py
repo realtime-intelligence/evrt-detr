@@ -1,5 +1,5 @@
-from torch.optim         import lr_scheduler
-from leanbase.base.funcs import extract_name_kwargs
+from torch.optim  import lr_scheduler
+from ..base.funcs import extract_name_kwargs
 
 SCHED_DICT = {
     'step'            : lr_scheduler.StepLR,
