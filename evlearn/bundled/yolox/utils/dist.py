@@ -10,16 +10,19 @@ This is useful when doing distributed training.
 """
 
 import functools
+import logging
 import os
 import pickle
 import time
 from contextlib import contextmanager
-from loguru import logger
+#from loguru import logger
 
 import numpy as np
 
 import torch
 from torch import distributed as dist
+
+logger = logging.getLogger('YOLOX/utils')
 
 __all__ = [
     "get_num_devices",
