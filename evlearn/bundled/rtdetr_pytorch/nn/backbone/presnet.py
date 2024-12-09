@@ -8,7 +8,7 @@ from collections import OrderedDict
 
 from .common import get_activation, ConvNormLayer, FrozenBatchNorm2d
 
-from src.core import register
+#from ...core import register
 
 
 __all__ = ['PResNet']
@@ -138,11 +138,12 @@ class Blocks(nn.Module):
         return out
 
 
-@register
+#@register
 class PResNet(nn.Module):
     def __init__(
         self, 
         depth, 
+        features_input = 3,
         variant='d', 
         num_stages=4, 
         return_idx=[0, 1, 2, 3], 
@@ -156,12 +157,12 @@ class PResNet(nn.Module):
         ch_in = 64
         if variant in ['c', 'd']:
             conv_def = [
-                [3, ch_in // 2, 3, 2, "conv1_1"],
+                [features_input, ch_in // 2, 3, 2, "conv1_1"],
                 [ch_in // 2, ch_in // 2, 3, 1, "conv1_2"],
                 [ch_in // 2, ch_in, 3, 1, "conv1_3"],
             ]
         else:
-            conv_def = [[3, ch_in, 7, 2, "conv1_1"]]
+            conv_def = [[features_input, ch_in, 7, 2, "conv1_1"]]
 
         self.conv1 = nn.Sequential(OrderedDict([
             (_name, ConvNormLayer(c_in, c_out, k, s, act=act)) for c_in, c_out, k, s, _name in conv_def
@@ -197,7 +198,7 @@ class PResNet(nn.Module):
             state = torch.hub.load_state_dict_from_url(donwload_url[depth])
             self.load_state_dict(state)
             print(f'Load PResNet{depth} state_dict')
-            
+
     def _freeze_parameters(self, m: nn.Module):
         for p in m.parameters():
             p.requires_grad = False
