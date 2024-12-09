@@ -15,7 +15,7 @@ from .utils import deformable_attention_core_func, get_activation, inverse_sigmo
 from .utils import bias_init_with_prob
 
 
-from src.core import register
+from ...core import register
 
 
 __all__ = ['RTDETRTransformer']
@@ -478,7 +478,9 @@ class RTDETRTransformer(nn.Module):
         if self.training or self.eval_spatial_size is None:
             anchors, valid_mask = self._generate_anchors(spatial_shapes, device=memory.device)
         else:
-            anchors, valid_mask = self.anchors.to(memory.device), self.valid_mask.to(memory.device)
+            anchors    = self.anchors.to(memory.device, dtype = memory.dtype)
+            valid_mask = self.valid_mask\
+                .to(memory.device, dtype = memory.dtype)
 
         # memory = torch.where(valid_mask, memory, 0)
         memory = valid_mask.to(memory.dtype) * memory  # TODO fix type error for onnx export 

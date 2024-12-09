@@ -5,7 +5,7 @@ import torch.nn.functional as F
 from collections import OrderedDict
 
 
-from src.core import register
+from ...core import register
 
 
 class BasicBlock(nn.Module):

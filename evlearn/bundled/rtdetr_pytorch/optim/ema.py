@@ -13,8 +13,8 @@ from copy import deepcopy
 
 
 
-from src.core import register
-import src.misc.dist as dist 
+from ...core import register
+import ..misc.dist as dist 
 
 
 __all__ = ['ModelEMA']

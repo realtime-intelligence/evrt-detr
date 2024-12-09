@@ -1,7 +1,7 @@
 import torch 
 import torch.nn as nn 
 
-from src.core import register
+from ...core import register
 
 
 __all__ = ['Classification', 'ClassHead']
