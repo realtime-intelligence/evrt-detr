@@ -20,22 +20,10 @@ class PResNetRTDETR(nn.Module):
         # pylint: disable=too-many-arguments
         super().__init__()
 
-        if pretrained:
+        if pretrained or freeze_norm or (freeze_at >= 0):
             LOGGER.warning(
-                'Trying to use PResNet bacbkone pre-trained on natural images'
-                '. Make sure you know what you are doing.'
-            )
-
-        if freeze_norm:
-            LOGGER.warning(
-                'Trying to use PResNet with frozen BN'
-                '. Make sure you know what you are doing.'
-            )
-
-        if freeze_at >= 0:
-            LOGGER.warning(
-                'Trying to use PResNet with frozen parameters'
-                '. Make sure you know what you are doing.'
+                'Trying to use either pre-trained or frozen PResNet backbone.'
+                ' This feature works properly only on natural images.'
             )
 
         self._net = PResNet(
