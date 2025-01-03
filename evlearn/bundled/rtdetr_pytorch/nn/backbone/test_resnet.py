@@ -1,3 +1,4 @@
+# This file was modified by Dmitrii Torbunov <dtorbunov@bnl.gov>
 import torch
 import torch.nn as nn 
 import torch.nn.functional as F 
