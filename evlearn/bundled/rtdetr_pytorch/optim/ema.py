@@ -1,3 +1,4 @@
+# This file was modified by Dmitrii Torbunov <dtorbunov@bnl.gov>
 """
 reference: 
 https://github.com/ultralytics/yolov5/blob/master/utils/torch_utils.py#L404

@@ -1,3 +1,4 @@
+# This file was modified by Dmitrii Torbunov <dtorbunov@bnl.gov>
 """
 reference: 
 https://github.com/facebookresearch/detr/blob/main/models/detr.py
