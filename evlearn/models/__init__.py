@@ -3,11 +3,13 @@ from evlearn.bundled.leanbase.base.funcs  import extract_name_kwargs
 from .frame_detection_rtdetr       import FrameDetectionRTDETR
 from .frame_detection_yolox        import FrameDetectionYoloX
 from .vcf_detection_evrtdetr       import VCFDetectionEvRTDETR
+from .vcf_detection_evyolox        import VCFDetectionEvYOLOX
 
 MODELS_DICT = {
     'frame-detection-rtdetr'       : FrameDetectionRTDETR,
     'frame-detection-yolox'        : FrameDetectionYoloX,
     'vcf-detection-evrtdetr'       : VCFDetectionEvRTDETR,
+    'vcf-detection-evyolox'        : VCFDetectionEvYOLOX,
 }
 
 def select_model(model, **kwargs):
